@@ -1,0 +1,41 @@
+#! /bin/sh
+# /etc/init.d/ilixi
+# 
+# This is an init script for starting ilixi automatically.
+# Make sure your TSLIB_TSDEVICE setting is correct.
+
+case "$1" in
+    start)
+	echo "Please wait: loading fusion..."
+	modprobe fusion
+	echo "Please wait: setting tslib environment variables..."
+ 	export TSLIB_TSDEVICE=/dev/input/touchscreen0
+ 	export TSLIB_CONFFILE=/etc/ts.conf
+	export TSLIB_FBDEVICE=/dev/fb0
+ 	export TSLIB_PLUGINDIR=/usr/lib/ts
+ 	export TSLIB_CALIBFILE=/etc/pointercal
+	echo "Please wait: starting ilixi maestro..."
+	ilixi_maestro --start
+	;;
+    stop)
+# not implemented!
+#	echo "Please wait: stopping ilixi maestro..."
+#	ilixi_maestro --stop
+	;;
+    status)
+	ilixi_maestro --status
+	;;
+    restart|force-reload) 
+# not implemented!
+#	echo "Please wait: restarting ilixi maestro..."
+#	ilixi_maestro --restart
+	exit
+	;;
+    *)
+	echo "Usage: /etc/init.d/ilixi {start|stop|status|restart|force-reload}"
+	exit 1
+	;;
+esac
+
+exit 0
+

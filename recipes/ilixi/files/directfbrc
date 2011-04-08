@@ -1,0 +1,3 @@
+pixelformat=ARGB
+memcpy=libc
+no-banner
