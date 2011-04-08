@@ -1,7 +1,7 @@
 DESCRIPTION = "C++ UI toolkit utilising DirectFB."
 HOMEPAGE = "http://www.ilixi.org"
 SECTION = "libs"
-LICENSE = "LGPL"
+LICENSE = "GPLv3"
 PRIORITY = "required"
 DEPENDS = "linux-fusion directfb-multi cairo-directfb-multi pango-cairo libsigc++-2.0 libxml2"
 PR = "r0"
